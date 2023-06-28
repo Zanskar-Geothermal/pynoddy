@@ -205,6 +205,7 @@ updateBatchStatus (message)
 char *message;
 #endif
 {
+	/**
 	FILE *batchProgressFile;
 
 	if (!(batchProgressFile = fopen ("noddyBatchProgress.txt", "w")))
@@ -212,7 +213,7 @@ char *message;
 
 	fprintf(batchProgressFile, message);
 	fclose(batchProgressFile);
-
+	**/
 	return (TRUE);
 }
 

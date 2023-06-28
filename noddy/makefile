@@ -1,10 +1,12 @@
 
 all:      noddy.exe 
 
-
-CCOPTS      = -O0 -w -g
-CC        = gcc
-LD      = gcc
+# Add ifdef XVT_CC_PROTO to disable batch output
+# contention on the output file limited scaling with
+# high core counts (June 2023)
+CCOPTS = -O0 -w -g -D XVT_CC_PROTO
+CC = gcc
+LD = gcc
 
 #
 #        Utility Definitions
@@ -470,6 +472,6 @@ legend.o: noddy.h
 
 #
 #        Application link line
-#
+#        (added link to libm)
 noddy.exe: $(OBJECTFILES) 
-	$(CC) $(OBJECTFILES)  -o $@
+	$(CC) $(OBJECTFILES) -lm -static -o $@
